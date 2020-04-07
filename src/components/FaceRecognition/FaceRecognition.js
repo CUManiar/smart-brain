@@ -1,7 +1,8 @@
 import React from "react";
 import "./FaceRecognition.css";
 
-const FaceRecognition = ({ imageUrl, box }) => {
+const FaceRecognition = ({ imageUrl, boxes }) => {
+  console.log(boxes);
   return (
     <div className="center ma mb5">
       <div className="absolute ma2">
@@ -14,19 +15,12 @@ const FaceRecognition = ({ imageUrl, box }) => {
             alt="info"
           />
         ) : (
-          "Please enter an URL! (Max char 200)"
-        )}
-        <div
-          className="bounding-box"
-          style={{
-            top: box.topRow,
-            right: box.rightCol,
-            bottom: box.bottomRow,
-            left: box.leftCol
-          }}
-        >
-          {" "}
-        </div>
+            "Please enter an URL! (Max char 200)"
+          )}
+
+        {boxes.map((box, i) => {
+          return <div className="bounding-box" style={{ top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol }} ></div>
+        })}
       </div>
     </div>
   );
